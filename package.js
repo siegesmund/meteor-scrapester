@@ -26,5 +26,7 @@ Package.onTest(function(api) {
 Npm.depends({
   "cheerio": "0.19.0",
   "request": "2.57.0",
-  "webshot": "0.16.0"
+  "webshot": "0.16.0",
+  "phantomjs": "1.9.17",
+  "aws-sdk": "2.1.33"
 });

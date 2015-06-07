@@ -12,13 +12,14 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.use(['peerlibrary:aws-sdk', 'meteorhacks:npm'])
-  api.addFiles('scrapester.js');
+  api.use(['underscore', 'coffeescript', 'peerlibrary:aws-sdk', 'meteorhacks:npm'])
+  api.addFiles('scrapester.coffee');
+  api.export(['S', 'Scrapester'], 'server');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('peter:scrapester');
+  api.use(['peter:scrapester', 'underscore']);
   api.addFiles('scrapester-tests.js');
 });
 

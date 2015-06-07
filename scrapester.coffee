@@ -28,6 +28,7 @@ S.links = (url) ->
   return $.error
 
 # Takes a screenshot of the url and saves it to Amazon S3
+# Amazon credentials must be set in environment variables
 S.webshot = (url, bucket) ->
   params = {Bucket: bucket, Key: "#{url}.png"}
   s3 = new AWS.S3()

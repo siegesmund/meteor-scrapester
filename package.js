@@ -12,6 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
+  api.use(['peerlibrary:aws-sdk', 'meteorhacks:npm'])
   api.addFiles('scrapester.js');
 });
 
@@ -19,4 +20,10 @@ Package.onTest(function(api) {
   api.use('tinytest');
   api.use('peter:scrapester');
   api.addFiles('scrapester-tests.js');
+});
+
+Npm.depends({
+  "cheerio": "0.19.0",
+  "request": "2.57.0",
+  "webshot": "0.16.0"
 });

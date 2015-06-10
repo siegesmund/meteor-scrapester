@@ -12,7 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.use(['underscore', 'coffeescript', 'meteorhacks:npm'])
+  api.use(['underscore', 'coffeescript', 'meteorhacks:npm', 'peter:lambda'])
   api.addFiles('scrapester.coffee');
   api.export(['S', 'Scrapester'], 'server');
 });

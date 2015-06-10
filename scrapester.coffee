@@ -5,6 +5,8 @@ if Meteor.isServer
   AWS = Npm.require 'aws-sdk'
   Readable = Npm.require('stream').Readable
 
+  L = new L({apiVersion: '2015-03-31', region: 'us-east-1'})
+
   S = Scrapester = {}
 
   S.get = (url) ->
@@ -40,3 +42,11 @@ if Meteor.isServer
         else
           params.Body = new Readable().wrap(stream)
           s3.upload params, (err, data) -> done err, data
+
+  _lambda = (params) -> Async.runSync (done) -> L.invoke params, (err,data) -> done err, data
+
+  S.webshotLambda = (url, bucket) ->
+    payload = JSON.stringify {url:url, bucket:bucket}
+    console.log payload
+    params = {FunctionName: 'screenshot', Payload: {url:url, bucket:bucket}}
+    _lambda params
